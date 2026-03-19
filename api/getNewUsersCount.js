@@ -2,7 +2,9 @@ import { BetaAnalyticsDataClient } from '@google-analytics/data';
 
 export default async function handler(req, res) {
   try {
-    const credentials = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON);
+    const credentials = JSON.parse(
+  process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON.replace(/\\n/g, '\n')
+);
 
     const analyticsDataClient = new BetaAnalyticsDataClient({
       credentials: credentials
